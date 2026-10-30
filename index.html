@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deepak · Data Science </title>
+  <!-- Font Awesome 5 (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f5f9ff;
+      color: #1e2b3c;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0 2rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #0a2647;
+    }
+
+    .logo span {
+      color: #2d6e9e;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2b3c;
+      transition: color 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #0a2647;
+      border-bottom-color: #2d6e9e;
+    }
+
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin: 1rem 0 3rem;
+      background: linear-gradient(135deg, #ffffff 0%, #e9f2fc 100%);
+      padding: 2.5rem 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 30, 60, 0.05);
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 280px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #0a2647;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-content .subhead {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2d6e9e;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hero-content .subhead i {
+      color: #1e476b;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      color: #2e4053;
+      max-width: 550px;
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      width: fit-content;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-badge i {
+      margin-right: 8px;
+      color: #2d6e9e;
+      width: 18px;
+    }
+
+    .contact-badge a {
+      text-decoration: none;
+      color: #1e2b3c;
+      font-weight: 500;
+    }
+
+    .contact-badge a:hover {
+      color: #0a2647;
+      text-decoration: underline;
+    }
+
+    .hero-avatar {
+      flex: 1;
+      min-width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-circle {
+      width: 160px;
+      height: 160px;
+      background: #0a2647;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      font-weight: 600;
+      color: white;
+      box-shadow: 0 20px 30px -10px rgba(10, 38, 71, 0.3);
+      border: 5px solid white;
+      transition: transform 0.2s;
+    }
+
+    .avatar-circle:hover {
+      transform: scale(1.02);
+    }
+
+    /* Section titles */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0a2647;
+      margin: 2.5rem 0 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: #2d6e9e;
+      border-radius: 4px;
+    }
+
+    /* Cards / grid */
+    .exp-grid, .edu-grid, .skill-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .exp-card, .edu-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e6edf5;
+      transition: all 0.2s;
+    }
+
+    .exp-card:hover, .edu-card:hover {
+      border-color: #b6d2eb;
+      box-shadow: 0 12px 24px -8px rgba(45, 110, 158, 0.12);
+    }
+
+    .exp-header, .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #0a2647;
+    }
+
+    .exp-company, .edu-institution {
+      font-weight: 600;
+      color: #2d6e9e;
+      font-size: 1rem;
+    }
+
+    .exp-date, .edu-date {
+      font-size: 0.85rem;
+      background: #e9f2fc;
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 500;
+      color: #1e476b;
+      white-space: nowrap;
+    }
+
+    .exp-desc {
+      margin-top: 0.75rem;
+      color: #2e4053;
+      font-size: 0.95rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid #b6d2eb;
+      padding-left: 1rem;
+    }
+
+    .exp-desc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .exp-desc li {
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 8px;
+    }
+
+    .exp-desc li i {
+      color: #2d6e9e;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+
+    /* Skills chips */
+    .skill-chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 0.5rem;
+    }
+
+    .skill-chip {
+      background: white;
+      border: 1px solid #cbdae8;
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #0a2647;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .skill-chip i {
+      color: #2d6e9e;
+      font-size: 1rem;
+    }
+
+    .skill-chip:hover {
+      background: #e9f2fc;
+      border-color: #2d6e9e;
+      transform: translateY(-2px);
+    }
+
+    /* Summary & strengths */
+    .summary-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid #e6edf5;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      color: #2e4053;
+      line-height: 1.7;
+    }
+
+    .strength-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .strength-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f0f7ff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+    }
+
+    .strength-item i {
+      color: #2d6e9e;
+    }
+
+    /* Achievements */
+    .achievement-card {
+      background: white;
+      padding: 1.2rem 1.8rem;
+      border-radius: 1.5rem;
+      border-left: 6px solid #2d6e9e;
+      margin: 1rem 0;
+      font-weight: 500;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .achievement-card i {
+      font-size: 1.8rem;
+      color: #2d6e9e;
+    }
+
+    /* Languages / training */
+    .lang-training {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .lang-box, .training-box {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid #e6edf5;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .lang-box h4, .training-box h4 {
+      font-size: 1.1rem;
+      color: #0a2647;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed #d9e6f2;
+    }
+
+    .lang-item:last-child {
+      border-bottom: none;
+    }
+
+    .lang-level {
+      color: #2d6e9e;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .training-item {
+      margin-bottom: 1rem;
+    }
+
+    .training-item strong {
+      display: block;
+      color: #0a2647;
+    }
+
+    .training-item span {
+      font-size: 0.9rem;
+      color: #4a627a;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid #d9e6f2;
+      color: #5b7a9a;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .contact-badge {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .exp-header, .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .exp-date, .edu-date {
+        align-self: flex-start;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      .avatar-circle {
+        width: 120px;
+        height: 120px;
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">Deepak<span>.</span></div>
+      <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Deepak</h1>
+        <div class="subhead">
+          <i class="fas fa-briefcase"></i> Data Operator & Excel Executive
+          <i class="fas fa-chart-line" style="margin-left: 10px;"></i> Team Leader
+        </div>
+        <p>Ambitious professional with hands‑on experience in data entry, Excel management, team leadership and e‑commerce operations. Currently pursuing Bachelor's degree and Data Science, dedicated to delivering accuracy and efficiency.</p>
+        <div class="contact-badge">
+          <a href="mailto:Deepak9873907476@gmai.com"><i class="fas fa-envelope"></i> Deepak9873907476@gmai.com</a>
+          <a href="#"><i class="fas fa-phone-alt"></i> +91 98739 07476</a>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> Begumpur, Delhi</a>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <div class="avatar-circle">D</div>
+      </div>
+    </section>
+
+    <!-- Summary (extra touch) -->
+    <div class="summary-box">
+      <i class="fas fa-quote-left" style="color:#2d6e9e; margin-right: 10px;"></i>
+      I am an ambitious individual with practical experience in various roles including sales, data entry, and team leadership. Currently pursuing my Bachelor's degree, I strive to apply my skills and knowledge in a progressive company while also nurturing my personal growth. I am characterized by my strong dedication, positive attitude, and ability to work both independently and collaboratively.
+    </div>
+
+    <!-- Experience Section -->
+    <h2 id="experience" class="section-title">Work Experience</h2>
+    <div class="exp-grid">
+      <!-- RBC Law Firm -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-title">Team Leader & Excel Executive</span>
+          <span class="exp-date">02/2024 – 06/2025</span>
+        </div>
+        <div class="exp-company">RBC Law Firm · New Delhi</div>
+        <div class="exp-desc">
+          <ul>
+            <li><i class="fas fa-circle"></i> Lead a team and managed Excel documentation effectively.</li>
+            <li><i class="fas fa-circle"></i> Prepared documents for posting using advanced Excel features.</li>
+            <li><i class="fas fa-circle"></i> Streamlined data workflows for legal firm operations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CMS Securitrans -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-title">Custodian Cum Auditor & Coordinator</span>
+          <span class="exp-date">02/2022 – 04/2023</span>
+        </div>
+        <div class="exp-company">CMS Securitrans Indian Pvt. Ltd · Delhi</div>
+        <div class="exp-desc">
+          <ul>
+            <li><i class="fas fa-circle"></i> 1.2 years as Custodian Cum Auditor and Coordinator.</li>
+            <li><i class="fas fa-circle"></i> Managed security and facility management documentation.</li>
+            <li><i class="fas fa-circle"></i> Coordinated audits and maintained compliance records.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Anu Bansal -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-title">Data Operator & Coordinator</span>
+          <span class="exp-date">08/2021 – 01/2022</span>
+        </div>
+        <div class="exp-company">Anu Bansal Bonus Deak Pvt. Ltd</div>
+        <div class="exp-desc">
+          <ul>
+            <li><i class="fas fa-circle"></i> E‑commerce operations: managed Amazon and Flipkart seller services.</li>
+            <li><i class="fas fa-circle"></i> Coordinated order processing and data reconciliation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Freelance Data Entry -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-title">Freelance Data Entry Associate</span>
+          <span class="exp-date">05/2021 – 07/2021</span>
+        </div>
+        <div class="exp-company">Work From Home</div>
+        <div class="exp-desc">
+          <ul>
+            <li><i class="fas fa-circle"></i> Performed efficient data entry tasks remotely.</li>
+            <li><i class="fas fa-circle"></i> Maintained Amazon sales data with high accuracy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Additional experience from summary -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-title">Sales Employee (6 months)</span>
+          <span class="exp-date">2020 – 2021</span>
+        </div>
+        <div class="exp-company">Vishal Mega Mart Supermarket</div>
+        <div class="exp-desc">
+          <ul>
+            <li><i class="fas fa-circle"></i> Provided customer service and handled sales transactions.</li>
+            <li><i class="fas fa-circle"></i> Assisted in inventory and stock management.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <h2 id="education" class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="exp-title">Bachelor's of Arts</span>
+          <span class="edu-date">06/2021 – 06/2024</span>
+        </div>
+        <div class="edu-institution">Indira Gandhi National Open University</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="exp-title">12th Grade (CBSE)</span>
+          <span class="edu-date">04/2020 – 04/2021</span>
+        </div>
+        <div class="edu-institution">Central Board of Secondary Education</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="exp-title">10th Grade (CBSE)</span>
+          <span class="edu-date">04/2018 – 04/2019</span>
+        </div>
+        <div class="edu-institution">Central Board of Secondary Education</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="exp-title">Diploma in Advanced Excel & Tally</span>
+          <span class="edu-date">Completed</span>
+        </div>
+        <div class="edu-institution">Amroz Info Institute</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-header">
+          <span class="exp-title">Data Science (Pursuing)</span>
+          <span class="edu-date">Ongoing</span>
+        </div>
+        <div class="edu-institution">Ducat IT Training Institute</div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <h2 id="skills" class="section-title">Skills & Expertise</h2>
+    <div class="skill-chip-container">
+      <div class="skill-chip"><i class="fas fa-file-excel"></i> Microsoft Excel</div>
+      <div class="skill-chip"><i class="fas fa-chart-pie"></i> Advanced Excel</div>
+      <div class="skill-chip"><i class="fas fa-calculator"></i> Tally</div>
+      <div class="skill-chip"><i class="fas fa-shopping-cart"></i> E-Commerce</div>
+      <div class="skill-chip"><i class="fas fa-users"></i> Team Leadership</div>
+      <div class="skill-chip"><i class="fas fa-database"></i> Data Entry</div>
+      <div class="skill-chip"><i class="fas fa-clock"></i> Time Management</div>
+      <div class="skill-chip"><i class="fas fa-check-circle"></i> Documentation</div>
+    </div>
+
+    <!-- Strengths & Achievements -->
+    <h2 class="section-title" style="margin-top: 2.5rem;">Strengths & Achievements</h2>
+    <div class="strength-list">
+      <div class="strength-item"><i class="fas fa-smile"></i> Positive Attitude</div>
+      <div class="strength-item"><i class="fas fa-handshake"></i> Teamwork & Independence</div>
+      <div class="strength-item"><i class="fas fa-medal"></i> Dedication</div>
+    </div>
+    <div class="achievement-card">
+      <i class="fas fa-trophy"></i>
+      <span><strong>Team Leadership & Coordination:</strong> Successfully led a team in a legal firm and managed multiple projects with effective coordination.</span>
+    </div>
+
+    <!-- Languages & Training -->
+    <div class="lang-training">
+      <div class="lang-box">
+        <h4><i class="fas fa-language"></i> Languages</h4>
+        <div class="lang-item"><span>Hindi</span> <span class="lang-level">Native</span></div>
+        <div class="lang-item"><span>English</span> <span class="lang-level">Proficient</span></div>
+      </div>
+      <div class="training-box">
+        <h4><i class="fas fa-graduation-cap"></i> Training / Courses</h4>
+        <div class="training-item">
+          <strong>Diploma in Advanced Excel & Tally</strong>
+          <span>Amroz Info Institute — Advanced Excel & accounting software.</span>
+        </div>
+        <div class="training-item">
+          <strong>Data Science (Pursuing)</strong>
+          <span>Ducat IT Training Institute — ongoing.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="footer">
+      <p><i class="fas fa-envelope"></i> Deepak9873907476@gmai.com &nbsp;|&nbsp; <i class="fas fa-phone-alt"></i> +91 98739 07476</p>
+      <p style="margin-top: 0.5rem;"><i class="fas fa-map-marker-alt"></i> H.NO.A-134 Begum Vihar, Begumpur, Delhi 110086</p>
+      <p style="margin-top: 1rem;">© 2025 Deepak · Portfolio</p>
+    </footer>
+  </div>
+
+  <!-- simple JS for smooth scrolling (optional) -->
+  <script>
+    (function() {
+      // Smooth scroll for nav links
+      document.querySelectorAll('.nav-links a, .contact-badge a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#') && href !== '#') {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
